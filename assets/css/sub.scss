@@ -1,0 +1,586 @@
+@mixin pc {
+	@media screen and (max-width: 1900px) {
+		@content;
+	}
+}
+
+@mixin sp {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin responsive($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+$red: #ED1C24;
+$bg: #ffb923;
+$blue: #1E257D;
+$yellow: #C19421;
+
+#s_fv {
+	.contain {
+		position: relative;
+
+		.text {
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			h1,
+			p {
+				text-align: center;
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+.r_ttl {
+	width: fit-content;
+	margin: auto;
+	position: relative;
+	padding-bottom: 15px;
+
+	@include pc {
+		padding-bottom: 15rem;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80px;
+		height: 3px;
+		background: $yellow;
+
+		@include pc {
+			width: 80rem;
+		}
+
+		@include sp {
+			width: 60rem;
+		}
+	}
+}
+
+.s_n_s1 {
+	.sec_contain {
+		.cat-list {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 40px 70px;
+
+			@include pc {
+				gap: 40rem 70rem;
+			}
+
+			.cat {
+				background-color: #fff;
+				color: $yellow;
+				transition: all 0.3s ease-in-out;
+				cursor: pointer;
+				border: 1px solid $yellow;
+				border-radius: 999px;
+				width: 100%;
+				padding: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				@include pc {
+					padding: 20rem;
+				}
+
+				&.active,
+				&:hover {
+					background-color: $yellow;
+					color: #fff;
+				}
+			}
+
+
+		}
+
+		.blog-list {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 50px;
+			margin-top: 100px;
+
+			@include pc {
+				gap: 50rem;
+				margin-top: 100rem;
+			}
+
+			@include sp {
+				grid-template-columns: 1fr;
+				gap: 70rem;
+				margin-top: 70rem;
+			}
+
+			.item {
+				cursor: pointer;
+
+				.img {
+					overflow: hidden;
+				}
+
+				.text {
+					margin-top: 20px;
+
+					@include pc {
+						margin-top: 20rem;
+					}
+
+					.meta {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+
+						.date {
+							color: $blue;
+						}
+
+						.cat {
+							background-color: $yellow;
+							border-radius: 999px;
+							width: 200px;
+							padding: 8px;
+							color: #fff;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							font-weight: bold;
+
+							@include pc {
+								width: 200rem;
+								padding: 8rem;
+							}
+
+							@include sp {
+								width: 300rem;
+							}
+						}
+					}
+
+					.ttl {
+						font-weight: bold;
+						margin-top: 20px;
+						transition: all 0.3s ease-in-out;
+
+						@include pc {
+							margin-top: 20rem;
+						}
+					}
+				}
+
+				&:hover {
+					.img {
+						img {
+							transform: scale(1.05);
+						}
+					}
+
+					.text .ttl {
+						color: $blue;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+
+.step-list {
+	margin-top: 90px;
+
+	@include pc {
+		margin-top: 90rem;
+	}
+
+	.step {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 30px;
+		margin-top: 60px;
+
+		@include pc {
+			gap: 30rem;
+			margin-top: 60rem;
+		}
+
+		&:last-child {
+			.num::before {
+				content: none;
+			}
+		}
+
+		.num {
+			width: 100px;
+			height: 100px;
+			background: #fff;
+			border-radius: 999px;
+			border: 1px solid $blue;
+			color: $yellow;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			line-height: 1;
+
+			position: relative;
+			z-index: 2;
+
+			@include pc {
+				width: 100rem;
+				height: 100rem;
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 1px;
+				height: 280px;
+				border-left: 4px dashed $blue;
+
+				@include pc {
+					height: 280rem;
+					border-left: 4rem dashed $blue;
+				}
+
+				@include sp {
+					height: 700rem;
+				}
+			}
+		}
+
+		.content {
+			width: calc(100% - 130px);
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+
+			@include pc {
+				width: calc(100% - 130rem);
+			}
+
+			@include sp {
+				flex-direction: column-reverse;
+				gap: 50rem;
+			}
+
+			.txt-div {
+				width: 490px;
+				padding-top: 15px;
+
+				@include pc {
+					width: 490rem;
+					padding-top: 15rem;
+				}
+
+				@include sp {
+					width: 100%;
+				}
+
+				h3 {
+					font-weight: bold;
+					color: $blue;
+				}
+
+				.f_sm {
+					margin-top: 20px;
+
+					@include pc {
+						margin-top: 20rem;
+					}
+				}
+			}
+
+			.img-div {
+				width: 420px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+
+				@include pc {
+					width: 420rem;
+				}
+
+				@include sp {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.s_msg {
+	padding: 0;
+
+	@include sp {
+		padding: 80rem 0;
+	}
+
+	.contain {
+		padding-top: 70px;
+
+		@include pc {
+			padding-top: 70rem;
+		}
+
+		.bg {
+			width: 100%;
+			height: 375px;
+			background-color: $bg;
+			opacity: 0.2;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+
+			@include pc {
+				height: 375rem;
+			}
+
+			@include sp {
+				height: 650rem;
+			}
+		}
+
+		.sec_contain {
+
+			@include sp {
+				padding: 0 40rem;
+			}
+
+			.ttl {
+				width: 560px;
+				padding-bottom: 150px;
+
+				@include pc {
+					width: 560rem;
+					padding-bottom: 150rem;
+				}
+
+				@include sp {
+					width: 100%;
+					padding-bottom: 0;
+				}
+
+				.maru {
+					font-weight: bold;
+					margin-top: 30px;
+
+					@include pc {
+						margin-top: 30rem;
+					}
+				}
+			}
+
+			.img {
+				width: 480px;
+				position: absolute;
+				top: 0;
+				right: 0;
+
+				@include pc {
+					width: 480rem;
+				}
+
+				@include sp {
+					position: relative;
+					top: unset;
+					right: unset;
+					width: 100%;
+					margin: 70rem auto;
+				}
+			}
+
+			p.right {
+				text-align: right;
+			}
+		}
+	}
+}
+
+.s_store-summary {
+	.sec_contain {
+		.contents {
+			margin-top: 50px;
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+
+			@include pc {
+				margin-top: 50rem;
+			}
+
+			@include sp {
+				flex-direction: column-reverse;
+			}
+
+			.info-list {
+				width: 560px;
+
+				@include pc {
+					width: 560rem;
+				}
+
+				@include sp {
+					width: 100%;
+					margin-top: 70rem;
+				}
+
+				.info-item {
+					padding: 30px 0;
+					border-top: 1px solid $blue;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+
+					&:last-child {
+						border-bottom: 1px solid $blue;
+					}
+
+					@include pc {
+						padding: 30rem 0;
+					}
+
+					.key {
+						width: 110px;
+
+						@include pc {
+							width: 110rem;
+						}
+
+						@include sp {
+							width: 150rem;
+						}
+					}
+
+				}
+			}
+
+			.imgs {
+				width: 480px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 15px;
+
+				@include pc {
+					width: 480rem;
+				}
+
+				@include sp {
+					width: 100%;
+				}
+
+			}
+		}
+	}
+}
+
+.r_section {
+	.sec_contain {
+		.anchor-link-div {
+			margin-bottom: 100px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 50px;
+
+			@include pc {
+				margin-bottom: 100rem;
+				gap: 50rem;
+			}
+
+			@include sp {
+				grid-template-columns: 1fr;
+				gap: 50rem;
+			}
+
+			.link-item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 30px;
+				border: 1px solid $yellow;
+				color: $yellow;
+				position: relative;
+
+				@include pc {
+					padding: 30rem;
+				}
+
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 30px;
+					height: 30px;
+					background-color: $yellow;
+					clip-path: polygon(100% 0, 100% 100%, 0 100%);
+				}
+
+				&:hover {
+					background-color: #fff;
+				}
+			}
+		}
+
+		.r_list {
+			margin-top: 70px;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 45px 22px;
+
+			@include pc {
+				gap: 45rem 22rem;
+			}
+
+			@include sp {
+				grid-template-columns: 1fr;
+				gap: 50rem;
+			}
+
+			.r_item {
+				padding: 20px 25px;
+				background-color: #e7e7e7;
+
+				@include pc {
+					padding: 20rem 25rem;
+				}
+
+				@include sp {
+					padding: 40rem;
+				}
+
+				p {
+					margin: auto;
+					text-align: center;
+					margin-top: 15px;
+					font-weight: bold;
+
+					@include pc {
+						margin-top: 15rem;
+					}
+				}
+			}
+		}
+	}
+}
